@@ -7,3 +7,4 @@ pandas==0.25.0
 chart_studio==1.0.0
 fbprophet==0.5
 httpstan==4.4.2
+pystan==3.2.0
