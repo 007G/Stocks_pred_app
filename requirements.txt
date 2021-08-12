@@ -33,7 +33,7 @@ ephem
 fbprophet
 gitdb==4.0.7
 GitPython==3.1.18
-hijri-converter @
+hijri-converter
 holidays 
 httpstan==4.5.0
 idna==3.2
