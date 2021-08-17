@@ -28,7 +28,7 @@ def main():
     stocks = ('GOOG', 'AAPL', 'MSFT', 'FB','CSCO','QCOM','SBUX','TSLA')
     selected_stock = st.selectbox("Choose a stock for prediction: ", stocks)
     n_years = st.slider('Years of prediction:', 1, 4)
-    period = number_years * 365
+    period = n_years * 365
 
     data_load_State = st.text("Load data.....")
 
