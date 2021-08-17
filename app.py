@@ -17,20 +17,16 @@ def main():
     START = "2015-01-01"
     TODAY = date.today().strftime('%Y-%m-%d')
 
-    st.title("Forecasting App")
-    html_temp = """
-        <div style="background-color:tomato;padding:10px">
-        <h2 style="color:white;text-align:center;">This is a Stock Price Forecasting Application </h2>
-        </div>
-        """
+    st.title("Stock Forecast App")
+   
     st.markdown(html_temp, unsafe_allow_html=True)
 
     stocks = ('GOOG', 'AAPL', 'MSFT', 'FB','CSCO','QCOM','SBUX','TSLA')
-    selected_stock = st.selectbox("Choose a stock for prediction: ", stocks)
+    selected_stock = st.selectbox("Select dataset for prediction: ", stocks)
     n_years = st.slider('Years of prediction:', 1, 4)
     period = n_years * 365
 
-    data_load_State = st.text("Load data.....")
+    data_load_State = st.text("Loading data...")
 
     @st.cache(allow_output_mutation=True)
     def loading_data(ticker):
@@ -47,7 +43,7 @@ def main():
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=df1['Date'], y=df1["Open"], name="Stock_Open"))
         fig.add_trace(go.Scatter(x=df1['Date'], y=df1["Close"], name="Stock_Close"))
-        fig.layout.update(title_text="Time Series Data", xaxis_rangeslider_visible=True)
+        fig.layout.update(title_text="Time Series data with Rangeslider", xaxis_rangeslider_visible=True)
         st.plotly_chart(fig)
     plot_raw_data()
 
@@ -60,7 +56,7 @@ def main():
     pred = model.make_future_dataframe(periods=period)
     forecast = model.predict(pred)
 
-    st.write("Forecsted Data")
+    st.write("Forecast data")
     def plot_final_data():
         fig1 = plot_plotly(model,forecast)
         st.plotly_chart(fig1)
